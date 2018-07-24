@@ -1,0 +1,31 @@
+<section class="musicdaily_edit">
+<div class="d-flex justify-content-center">
+<div class="w-50 p-3"><br><br>
+<h1 class="musicdaily_edit_title">music daily 수정하기</h1>
+<div class="musicdaily_edit">
+<form action='/daily/<%= @daily.id%>' method='POST'>
+    
+    <input type="hidden" name="_method" value="patch"></input>
+    <input type='hidden' name='authenticity_token' value=<%=@token %>></input>
+    
+    <div class="musicdaily_title">
+        <label for="title">Music Daily Title</label>
+        <input name='title' type='text' class="form-control" placeholder='daily name' value="<%= @daily.title%>"></input>
+    </div>
+    <div class="musicdaily_music">
+        <label for="music">Music</label>
+        <input name='music' type='text' class="form-control" value="<%= @daily.music%>"></input>
+    </div>
+    <div class="musicdaily_singer">
+        <label for="singer">Singer</label>
+        <input name='singer' type='text' class="form-control" value="<%= @daily.singer%>"></input>
+    </div>
+    <div class="musicdaily_content">
+        <label for="contents">Contents</label>
+        <input name='content' type='text' class="form-control" value="<%= @daily.content%>"></input><br>
+    </div>
+<button type="submit" value='save' class="btn btn-secondary">등록</button>
+</div>
+</div>
+</div>
+</section>

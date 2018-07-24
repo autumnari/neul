@@ -1,0 +1,80 @@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
+<script>
+    $(function(){
+        var index = <%=raw @musictitles %>
+        $(".music").autocomplete({
+            source: index
+        });
+    });
+    $(function(){
+        var index = <%=raw @musicsingers %>
+        $(".singer").autocomplete({
+            source: index
+        });
+    });
+</script>
+<form action='/tapes' method='POST' enctype='multipart/form-data'>
+    <%= hidden_field_tag :authenticity_token,form_authenticity_token%>
+    <input name='authenticity_token' type='hidden'value=<%= @token%>></input>
+    <input name='user_id' type='hidden' value=<%= @userID %>></input>
+    
+<section class="tape_form">
+    <div class="d-flex justify-content-center">
+    <div class="w-50 p-3">
+        <h1 class="post_intro">one day, one tape</h1>
+<br>
+<form>           
+    <label>Tape Name <input name='input_title' type='text' class="form-control" placeholder='tape name'></input> </label>
+   <br>
+    <label>Music <input class='music' name='music1' type='text' autocomplete='off'></input></label>
+    <label>Singer <input class='singer' name='singer1' type='text' autocomplete='off'></input></label>
+    <br>
+    
+    <label>Music <input class='music' name='music2' type='text' autocomplete='off'></input></label>
+    <label>Singer <input class='singer' name='singer2' type='text' autocomplete='off'></input></label>
+    <br>
+    
+    <label>Music <input class='music' name='music3' type='text' autocomplete='off'></input></label>
+    <label>Singer <input class='singer' name='singer3' type='text' autocomplete='off'></input></label>
+    <br>
+    
+    <label>Music <input class='music' name='music4' type='text' autocomplete='off'></input></label>
+    <label>Singer <input class='singer' name='singer4' type='text' autocomplete='off'></input></label>
+    <br>
+
+    <label>Music <input class='music' name='music5' type='text' autocomplete='off'></input></label>
+    <label>Singer <input class='singer' name='singer5' type='text' autocomplete='off'></input></label>
+    <br>
+    
+    <label>Music <input class='music' name='music6' type='text' autocomplete='off'></input></label>
+    <label>Singer <input class='singer' name='singer6' type='text' autocomplete='off'></input></label>
+    <br>
+
+    <label>Music <input class='music' name='music7' type='text' autocomplete='off'></input></label>
+    <label>Singer <input  class='singer' name='singer7' type='text' autocomplete='off'></input></label>
+    <br>
+    
+    <label>Music <input class='music' name='music8' type='text' autocomplete='off'></input></label>
+    <label>Singer <input class='singer' name='singer8' type='text' autocomplete='off'></input></label>
+    <br>
+
+    <label>Music <input class='music' name='music9' type='text' autocomplete='off'></input></label>
+    <label>Singer <input class='singer' name='singer9' type='text' autocomplete='off'></input></label>
+    <br>
+    
+    <label>Music <input class='music' name='music10' type='text' autocomplete='off'></input></label>
+    <label>Singer <input class='singer' name='singer10' type='text' autocomplete='off'></input></label>
+    <br>
+
+    <label>tape image <input type='file' name='img_input'></input></label>
+    
+    <br>
+    <button type="submit" class="btn btn-secondary" value='save'>등록</button>
+ </form> 
+</form>
+</div>
+  </div>
+  </section>

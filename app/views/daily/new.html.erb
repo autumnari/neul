@@ -1,0 +1,58 @@
+<!-- Post Page : Daily -->
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
+<script>
+    $(function(){
+        var index = <%=raw @musictitles %>
+        $("#music_").autocomplete({
+            source: index
+        });
+    });
+    $(function(){
+        var index = <%=raw @musicsingers %>
+        $("#singer_").autocomplete({
+            source: index
+        });
+    });
+</script>
+
+    
+<div>
+   
+    <form action='/daily' method='POST'>
+    
+        <input name='authenticity_token' type='hidden' value=<%= @token%>></input>
+        <input name='userID' type='hidden' value=<%= @userID%>></input>
+        <br>
+        
+    <section class="musicdaily_form">
+    <div class="d-flex justify-content-center">
+    <div class="w-50 p-3">
+        <h1 class="post_intro">How is your day?</h1>
+      <form>
+      <div class="musicdaily_title">
+        <label for="title">Music Daily Title</label>
+        <input type="text" name="title" class="form-control">
+      </div>
+      
+      <div class="musicdaily_music">
+        <label for="music">Music</label>
+        <input type="text" name="music" class="form-control" id="music_">
+      </div>
+      <div class="musicdaily_singer">
+        <label for="singer">Singer</label>
+        <input type="text" name="singer" class="form-control" id="singer_">
+      </div>
+      <div class="musicdaily_content">
+        <label for="contents">Contents</label>
+        <textarea class="form-control" name="content" type="text" rows="3"></textarea>
+      </div>
+      <br>
+       <button type="submit" value='save' class="btn btn-secondary">등록</button>
+    </form>
+</div>
+</div>
+</section>

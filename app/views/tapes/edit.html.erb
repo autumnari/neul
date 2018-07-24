@@ -1,0 +1,86 @@
+<script>
+    $(function(){
+        var index = <%=raw @musictitles %>
+        $(".music").autocomplete({
+            source: index
+        });
+    });
+    $(function(){
+        var index = <%=raw @musicsingers %>
+        $(".singer").autocomplete({
+            source: index
+        });
+    });
+</script>
+
+<section class="tape_edit">
+<div class="d-flex justify-content-center">
+<div class="w-50 p-3"><br><br>
+<h1 class="tape_edit_title">tape 수정하기</h1><br>
+<div class="tape_edit">
+
+<form action='/tapes/<%= @tape.id%>' method='POST'>
+    
+    <input type="hidden" name="_method" value="patch"></input>
+    <input type='hidden' name='authenticity_token' value=<%=@token %>></input>
+   
+    <label for="input_title">Tape Name</label>
+    <input name='input_title' type='text' placeholder='tape name' value="<%= @tape.title%>"></input><br>
+    
+    <label for="music1">Music</label>
+    <input class="music" name='music1' type='text' value="<%= @tape.m1_title%>"></input>
+    <label for="singer1">Singer</label>
+    <input class="singer" name='singer1' type='text' value="<%= @tape.m1_singer%>"></input><br>
+    
+    <label for="music2">Music</label>
+    <input class="music" name='music2' type='text' value="<%= @tape.m2_title%>"></input>
+    <label for="singer2">Singer</label>
+    <input class="singer" name='singer2' type='text' value="<%= @tape.m2_singer%>"></input><br>
+
+    <label for="music3">Music</label>
+    <input class="music" name='music3' type='text' value="<%= @tape.m3_title%>"></input>
+    <label for="singer3">Singer</label>
+    <input class="singer" name='singer3' type='text' value="<%= @tape.m3_singer%>"></input><br>
+    
+    <label for="music4">Music</label>
+    <input class="music" name='music4' type='text' value="<%= @tape.m4_title%>"></input>
+    <label for="singer4">Singer</label>
+    <input class="singer" name='singer4' type='text' value="<%= @tape.m4_singer%>"></input><br>
+
+    <label for="music5">Music</label>
+    <input class="music" name='music5' type='text' value="<%= @tape.m5_title%>"></input>
+    <label for="singer5">Singer</label>
+    <input class="singer" name='singer5' type='text' value="<%= @tape.m5_singer%>"></input><br>
+    
+    <label for="music6">Music</label>
+    <input class="music" name='music6' type='text' value="<%= @tape.m6_title%>"></input>
+    <label for="singer6">Singer</label>
+    <input class="singer" name='singer6' type='text' value="<%= @tape.m6_singer%>"></input><br>
+   
+    <label for="music7">Music</label>
+    <input class="music" name='music7' type='text' value="<%= @tape.m7_title%>"></input>
+    <label for="singer7">Singer</label>
+    <input class="singer" name='singer7' type='text' value="<%= @tape.m7_singer%>"></input><br>
+    
+    <label for="music8">Music</label>
+    <input class="music" name='music8' type='text' value="<%= @tape.m8_title%>"></input>
+    <label for="singer8">Singer</label>
+    <input class="singer" name='singer8' type='text' value="<%= @tape.m8_singer%>"></input><br>
+    
+    <label for="music9">Music</label>
+    <input class="music" name='music9' type='text' value="<%= @tape.m9_title%>"></input>
+    <label for="singer9">Singer</label>
+    <input class="singer" name='singer9' type='text' value="<%= @tape.m9_singer%>"></input><br>
+    
+    <label for="music10">Music</label>
+    <input class="music" name='music10' type='text' value="<%= @tape.m10_title%>"></input>
+    <label for="singer10">Singer</label>
+    <input class="singer" name='singer10' type='text' value="<%= @tape.m10_singer%>"></input>
+    
+     <input type='file' name='img_input' value=<%= @tape.image%>></input><br>
+    <button type='submit' value='save' class="btn btn-secondary">등록</button>
+</form>
+</div>
+</div>
+</div>
+</section>

@@ -1,0 +1,288 @@
+<!-- My page -->
+
+  <style>
+    a:link  { text-decoration: none; color: black}
+    a:visited {  text-decoration: none; color: black}
+    a:active {  text-decoration: none; color: black}
+    a:hover { text-decoration: none; color:black; background-color: none}
+  </style>
+
+      <section class="radio">
+        <img class="radio_img" src="/assets/radio.png">
+        <div class="marquee" style="width: 15.2%; position: absolute; margin-top: -15rem; margin-left: 70rem;">
+         <MARQUEE scrolldelay="100" direction="left">
+          <p style="font-size: 3rem" class="floating_music">모든 날, 모든 순간 (Every day, Every moment) - 폴킴</p>
+         </MARQUEE>
+        </div>
+        <div class="dial_menu">
+          <ul class="nav justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link" href="/daily">Daily</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/">&nbsp;&nbsp;&nbsp;Tape</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/my_page/index">My Page</a>
+            </li>
+          </ul>
+        </div>
+        <div class="dial">
+            <img src="/assets/mypage_dial_img.png" class="dial_img">
+          <!--<input type="range" style="width:40%">-->
+        </div>
+      </section>
+ 
+    
+    
+  <section class="profile_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-2">
+          <img src="/assets/profile.png" alt="" class="profile_img">
+        </div>
+        <div class="col-xl-10">
+          <table class="profile_nick-count">
+            <tr>
+              <td class="nick_box">
+                <p class="nick_name"><%= current_user.name %></p>
+                <a href="/users/edit"><img src="/assets/setting.png" class="setting_button"></a>
+              </td>
+              <td class="count_box">
+                <p class="scrap_count">scrap <b><%= current_user.likes.count %></b></p>
+                <p class="daily_count">daily <b><%= current_user.dailies.count %></b></p>
+                <p class="tape_count">tape <b><%= current_user.tapes.count %></b></p>
+              </td>
+            </tr>
+          </table>
+          <p class="introduce_text"><%= current_user.introduce_text %></p> 
+          <br>
+          <br>
+        </div>
+
+        <img src="/assets/post.png" alt="" class="post_icon">
+
+        <div class="post_page">
+          <li class="nav-item_dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Upload Post
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="/tapes/new">Tape</a>
+              <a class="dropdown-item" href="/daily/new">Music daily</a>
+          </li>
+        </div>
+
+  </section>
+
+<!-- tab -->
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+  <div id="container">
+    <ul class="tab" style="font-size: 2rem">
+      <li class="current" data-tab="tab1">
+        <p style="cursor:pointer">Tape</p>
+      </li>
+      <li data-tab="tab2">
+        <p style="cursor:pointer">Daily</p>
+      </li>
+      <li data-tab="tab3">
+        <p style="cursor:pointer">Scrap</p>
+      </li>
+    </ul>
+  </div>
+
+<div id="tab1" class="tabcontent current">
+ <div class="total_tape_copy">
+    <% current_user.tapes.each do |tape|%>
+    <section class="tape_1">
+      <div class="tape">
+        <img src="<%= tape.image%>" alt="" class="no_upload_img">
+        <div class="tape_name"><%= tape.title%></div>
+        <img class="tape_grey_img" src="/assets/tape_grey.png">
+      </div>
+      
+      <div class="tape_list">
+        <table class="song_list">
+          <tr>
+            <td class="songlist_1"><%= tape.m1_title%> - <%= tape.m1_singer%></td>
+            <td class="tape_like_btn">
+              <form action="/likes/:tape_id/create" method='post'>
+                <input name='authenticity_token' type='hidden'value=<%= @token%>></input>
+                <input id="mname" type="hidden" name="music_name" value="<%= tape.m1_title %>"></input>
+                <input id="msinger" type="hidden" name="music_singer" value="<%= tape.m1_singer %>"></input>
+                <input type="submit" value="녹음하기"></input>
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td class="songlist_2"><%= tape.m2_title%> - <%= tape.m2_singer%></td>
+            <td class="tape_like_btn">
+              <form action="/likes/:tape_id/create" method='post'>
+                <input name='authenticity_token' type='hidden'value=<%= @token%>></input>
+                <input id="mname" type="hidden" name="music_name" value="<%= tape.m2_title %>"></input>
+                <input id="msinger" type="hidden" name="music_singer" value="<%= tape.m2_singer %>"></input>
+                <input type="submit" value="녹음하기"></input>
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td class="songlist_3"><%= tape.m3_title%> - <%= tape.m3_singer%></td>
+            <td class="tape_like_btn">
+              <form action="/likes/:tape_id/create" method='post'>
+                <input name='authenticity_token' type='hidden'value=<%= @token%>></input>
+                <input id="mname" type="hidden" name="music_name" value="<%= tape.m3_title %>"></input>
+                <input id="msinger" type="hidden" name="music_singer" value="<%= tape.m3_singer %>"></input>
+                <input type="submit" value="녹음하기"></input>
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td class="songlist_4"><%= tape.m4_title%> - <%= tape.m4_singer%></td>
+            <td class="tape_like_btn">
+              <form action="/likes/:tape_id/create" method='post'>
+                <input name='authenticity_token' type='hidden'value=<%= @token%>></input>
+                <input id="mname" type="hidden" name="music_name" value="<%= tape.m4_title %>"></input>
+                <input id="msinger" type="hidden" name="music_singer" value="<%= tape.m4_singer %>"></input>
+                <input type="submit" value="녹음하기"></input>
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td class="songlist_5"><%= tape.m5_title%> - <%= tape.m5_singer%></td>
+            <td class="tape_like_btn">
+              <form action="/likes/:tape_id/create" method='post'>
+                <input name='authenticity_token' type='hidden'value=<%= @token%>></input>
+                <input id="mname" type="hidden" name="music_name" value="<%= tape.m5_title %>"></input>
+                <input id="msinger" type="hidden" name="music_singer" value="<%= tape.m5_singer %>"></input>
+                <input type="submit" value="녹음하기"></input>
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td class="songlist_6"><%= tape.m6_title%> - <%= tape.m6_singer%></td>
+            <td class="tape_like_btn">
+              <form action="/likes/:tape_id/create" method='post'>
+                <input name='authenticity_token' type='hidden'value=<%= @token%>></input>
+                <input id="mname" type="hidden" name="music_name" value="<%= tape.m6_title %>"></input>
+                <input id="msinger" type="hidden" name="music_singer" value="<%= tape.m6_singer %>"></input>
+                <input type="submit" value="녹음하기"></input>
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td class="songlist_7"><%= tape.m7_title%> - <%= tape.m7_singer%></td>
+            <td class="tape_like_btn">
+              <form action="/likes/:tape_id/create" method='post'>
+                <input name='authenticity_token' type='hidden'value=<%= @token%>></input>
+                <input id="mname" type="hidden" name="music_name" value="<%= tape.m7_title %>"></input>
+                <input id="msinger" type="hidden" name="music_singer" value="<%= tape.m7_singer %>"></input>
+                <input type="submit" value="녹음하기"></input>
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td class="songlist_8"><%= tape.m8_title%> - <%= tape.m8_singer%></td>
+            <td class="tape_like_btn">
+              <form action="/likes/:tape_id/create" method='post'>
+                <input name='authenticity_token' type='hidden'value=<%= @token%>></input>
+                <input id="mname" type="hidden" name="music_name" value="<%= tape.m8_title %>"></input>
+                <input id="msinger" type="hidden" name="music_singer" value="<%= tape.m8_singer %>"></input>
+                <input type="submit" value="녹음하기"></input>
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td class="songlist_9"><%= tape.m9_title%> - <%= tape.m9_singer%></td>
+            <td class="tape_like_btn">
+              <form action="/likes/:tape_id/create" method='post'>
+                <input name='authenticity_token' type='hidden'value=<%= @token%>></input>
+                <input id="mname" type="hidden" name="music_name" value="<%= tape.m9_title %>"></input>
+                <input id="msinger" type="hidden" name="music_singer" value="<%= tape.m9_singer %>"></input>
+                <input type="submit" value="녹음하기"></input>
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td class="songlist_10"><%= tape.m10_title%> - <%= tape.m10_singer%></td>
+            <td class="tape_like_btn">
+              <form action="/likes/:tape_id/create" method='post'>
+                <input name='authenticity_token' type='hidden'value=<%= @token%>></input>
+                <input id="mname" type="hidden" name="music_name" value="<%= tape.m10_title %>"></input>
+                <input id="msinger" type="hidden" name="music_singer" value="<%= tape.m10_singer %>"></input>
+                <input type="submit" value="녹음하기"></input>
+              </form>
+            </td>
+          </tr>
+      </table>
+        <div class="tape_edit_box">
+          <a href=" /tapes/<%= tape.id%>/edit" class="tape_edit_btn">수정</a>
+          <a href="/tapes/<%= tape.id%>" class="tape_delete_btn" data-confirm ='삭제...하려구요..?' data-method='delete' >삭제</a>
+        </div>
+      </div>
+    </section>
+    <% end%>
+    </div>
+    </div>
+
+<div id="tab2" class="tabcontent">
+  <div class="total_daily_copy">
+          
+  <% current_user.dailies.each do |daily| %>
+    <div class="musicdaily_1">
+      <img src="/assets/musicdaily.png" class="musicdaily_img">
+      <div class="musicdaily_tape_title"><%= daily.title %></div>
+      <div class="musicdaily_contents">
+        <p class="musicdaily_song_name"><%= daily.music %></p>
+        <p class="musicdaily_singer_name"><%= daily.singer %></p>
+          <form action="likes/:daily_id/create" method='post'>
+            <input name='authenticity_token' type='hidden'value=<%= @token%>></input>
+            <input id="mname" type="hidden" name="music_name" value=<%= daily.music.gsub(/\s+/, "") %>>
+            <input id="msinger" type="hidden" name="music_singer" value=<%= daily.singer.gsub(/\s+/, "") %>>
+            <input type="submit" value="녹음하기">
+          </form>
+        <p class="musicdaily_contents_article"><%= daily.content %></p>
+        <% @users.each do |user| %>
+         <%if user.id==daily.user_id %>
+            <p class="musicdaily_nickname">by <%= user.name %></p> 
+          <% end %>
+        <% end %>
+        
+        <div class="daily_edit_box">
+          <a href="/daily/<%= daily.id%>/edit" class="daily_edit_btn">수정</a>
+          <a href="/daily/<%= daily.id%>" class="daily_delete_btn"  data-confirm ='삭제...하려구요..?' data-method='delete'>삭제</a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+      </div>
+    </div>
+
+    <div id="tab3" class="tabcontent">
+      <% current_user.likes.each do |like| %>
+        <% @musics.each  do |music| %>
+          <% if(like.music_id == music.id) %>
+            <div class="recorded_music"><%= music.title %>-<%= music.singer %></div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+
+
+  <script>
+    $(function() {
+      $('ul.tab li').click(function() {
+        var activeTab = $(this).attr('data-tab');
+        $('ul.tab li').removeClass('current');
+        $('.tabcontent').removeClass('current');
+        $(this).addClass('current');
+        $('#' + activeTab).addClass('current');
+      })
+    });
+  </script>
+
+
+
+  </body>
+</html>

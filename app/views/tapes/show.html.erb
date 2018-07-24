@@ -1,0 +1,94 @@
+<h1><%= @tape.title %></h1>
+
+
+    <ul>
+
+ <!--tape에 입힐 사진-->
+        <!--<img src="..." alt="" class="upload_img">
+        <li> <img src="<%= @tape.image %>"></li>-->
+        
+        <li><%=@tape.m1_singer %>-<%= @tape.m1_title%>
+            <form action="/likes/:tape_id/create" method='post'>
+                <input name='authenticity_token' type='hidden'value=<%= @token%>></input>
+                <input id="mname" type="hidden" name="music_name" value=<%= @tape.m1_title %>></input>
+                <input id="msinger" type="hidden" name="music_singer" value=<%= @tape.m1_singer %>></input>
+                <input type="submit" value="submit"></input>
+            </form>
+        </li>
+        <li><%=@tape.m2_singer %>-<%= @tape.m2_title%>
+            <form action="likes/:tape_id/create" method='post'>
+                <input name='authenticity_token' type='hidden'value=<%= @token%>></input>
+                <input id="mname" type="hidden" name="music_name" value=<%= @tape.m2_title %>></input>
+                <input id="msinger" type="hidden" name="music_singer" value=<%= @tape.m2_singer %>></input>
+                <input type="submit" value="submit"></input>
+            </form>
+        </li>
+        <li><%=@tape.m3_singer %>-<%= @tape.m3_title%>
+            <form action="likes/:tape_id/create" method='post'>
+                <input name='authenticity_token' type='hidden'value=<%= @token%>></input>
+                <input id="mname" type="hidden" name="music_name" value=<%= @tape.m3_title %>></input>
+                <input id="msinger" type="hidden" name="music_singer" value=<%= @tape.m3_singer %>></input>
+                <input type="submit" value="submit"></input>
+            </form>
+        </li>
+        <li><%=@tape.m4_singer %>-<%= @tape.m4_title%>
+            <form action="likes/:tape_id/create" method='post'>
+                <input name='authenticity_token' type='hidden'value=<%= @token%>></input>
+                <input id="mname" type="hidden" name="music_name" value=<%= @tape.m4_title %>></input>
+                <input id="msinger" type="hidden" name="music_singer" value=<%= @tape.m4_singer %>></input>
+                <input type="submit" value="submit"></input>
+            </form>
+        </li>
+        <li><%=@tape.m5_singer %>-<%= @tape.m5_title%>
+            <form action="likes/:tape_id/create" method='post'>
+                <input name='authenticity_token' type='hidden'value=<%= @token%>></input>
+                <input id="mname" type="hidden" name="music_name" value=<%= @tape.m5_title %>></input>
+                <input id="msinger" type="hidden" name="music_singer" value=<%= @tape.m5_singer %>></input>
+                <input type="submit" value="submit"></input>
+            </form>
+        </li>
+        <li><%=@tape.m6_singer %>-<%= @tape.m6_title%>
+            <form action="likes/:tape_id/create" method='post'>
+                <input name='authenticity_token' type='hidden'value=<%= @token%>></input>
+                <input id="mname" type="hidden" name="music_name" value=<%= @tape.m6_title %>></input>
+                <input id="msinger" type="hidden" name="music_singer" value=<%= @tape.m6_singer %>></input>
+                <input type="submit" value="submit"></input>
+            </form>
+        </li>
+        <li><%=@tape.m7_singer %>-<%= @tape.m7_title%>
+            <form action="likes/:tape_id/create" method='post'>
+                <input name='authenticity_token' type='hidden'value=<%= @token%>></input>
+                <input id="mname" type="hidden" name="music_name" value=<%= @tape.m7_title %>></input>
+                <input id="msinger" type="hidden" name="music_singer" value=<%= @tape.m7_singer %>></input>
+                <input type="submit" value="submit"></input>
+            </form>
+        </li>
+        <li><%=@tape.m8_singer %>-<%= @tape.m8_title%>
+            <form action="likes/:tape_id/create" method='post'>
+                <input name='authenticity_token' type='hidden'value=<%= @token%>></input>
+                <input id="mname" type="hidden" name="music_name" value=<%= @tape.m8_title %>></input>
+                <input id="msinger" type="hidden" name="music_singer" value=<%= @tape.m8_singer %>></input>
+                <input type="submit" value="submit"></input>
+            </form>
+        </li>
+        <li><%=@tape.m9_singer %>-<%= @tape.m9_title%>
+            <form action="likes/:tape_id/create" method='post'>
+                <input name='authenticity_token' type='hidden'value=<%= @token%>></input>
+                <input id="mname" type="hidden" name="music_name" value=<%= @tape.m9_title %>></input>
+                <input id="msinger" type="hidden" name="music_singer" value=<%= @tape.m9_singer %>></input>
+                <input type="submit" value="submit"></input>
+            </form>
+        </li>
+        <li><%=@tape.m10_singer %>-<%= @tape.m10_title%>
+            <form action="likes/:tape_id/create" method='post'>
+                <input name='authenticity_token' type='hidden'value=<%= @token%>></input>
+                <input id="mname" type="hidden" name="music_name" value=<%= @tape.m10_title %>></input>
+                <input id="msinger" type="hidden" name="music_singer" value=<%= @tape.m10_singer %>></input>
+                <input type="submit" value="submit"></input>
+            </form>
+        </li>
+    </ul>
+<a href='/tapes'>다른 테이프로</a>
+<a href='/tapes/<%= @tape.id%>' data-confirm ='삭제...하려고..?' data-method='delete'>삭제</a>
+<a href='/tapes/<%= @tape.id%>/edit'>수정</a>
+

@@ -1,0 +1,62 @@
+<!--daily index page-->
+
+<style>
+    a:link  { text-decoration: none; color: black}
+    a:visited {  text-decoration: none; color: black}
+    a:active {  text-decoration: none; color: black}
+    a:hover { text-decoration: none; color:black; background-color: none}
+  </style>
+      <section class="radio">
+        <img class="radio_img" src="/assets/radio.png">
+        <div class="marquee" style="width: 15.2%; position: absolute; margin-top: -15rem; margin-left: 70rem;">
+         <MARQUEE scrolldelay="100" direction="left">
+          <p style="font-size: 3rem" class="floating_music">모든 날, 모든 순간 (Every day, Every moment) - 폴킴</p>
+         </MARQUEE>
+        </div>
+        <div class="dial_menu">
+          <ul class="nav justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link" href="/daily">Daily</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/">&nbsp;&nbsp;&nbsp;Tape</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/my_page/index">My Page</a>
+            </li>
+          </ul>
+          <div class="dial">
+              <img src="/assets/daily_dial_img.png" class="dial_img">
+          </div>
+          <!--
+        <div class="dial">
+          <input type="range" style="width:40%">
+          -->
+        </div>
+      </section>
+
+<div class="total_musicdaily">
+  <% @dailies.sample(15).each do |daily| %>
+    <div class="musicdaily_1">
+      <img src="/assets/musicdaily.png" class="musicdaily_img">
+      <div class="musicdaily_tape_title"><%= daily.title %></div>
+      <div class="musicdaily_contents">
+        <p class="musicdaily_song_name"><%= daily.music %></p>
+        <p class="musicdaily_singer_name"><%= daily.singer %></p>
+          <form action="likes/:daily_id/create" method='post'>
+            <input name='authenticity_token' type='hidden'value=<%= @token%>></input>
+            <input id="mname" type="hidden" name="music_name" value="<%= daily.music %>">
+            <input id="msinger" type="hidden" name="music_singer" value="<%= daily.singer %>">
+            <input type="submit" value="녹음하기">
+          </form>
+        <p class="musicdaily_contents_article"><%= daily.content %></p>
+        <% @users.each do |user| %>
+          <%if user.id==daily.user_id %>
+            <p class="musicdaily_nickname">by <%= user.name %></p> 
+          <% end %>
+        <% end %>
+        
+      </div>
+    </div>
+  <% end %>
+</div>

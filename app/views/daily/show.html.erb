@@ -1,0 +1,11 @@
+<h1><%= @daily.title %></h1>
+<ul>
+    <%= @daily.music %><br>
+    <%= @daily.singer %><br>
+    <%= @daily.content%>
+
+</ul>
+
+<a href='/daily'> daily 목록 </a>
+<a href='/daily/<%= @daily.id%>' data-confirm ='삭제하시나요?' data-method= 'delete'>삭제하기</a>
+<a href='/daily/<%= @daily.id%>/edit'>수정하기</a>

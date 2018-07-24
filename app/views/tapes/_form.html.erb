@@ -1,0 +1,13 @@
+<%= form_for Tape.new do |f| %>
+    <div class="field">
+        <%= f.label :music_name %><br />
+        <%= f.text_field :music_name, data: {autocomplete_source: musics_path} %>
+    </div>
+    <div class="field">
+        <%= f.label :singer_name %><br />
+        <%= f.text_field :singer_name %>
+    </div>
+    <div class="actions">
+        <%= f.submit %>
+    </div>
+<% end %>

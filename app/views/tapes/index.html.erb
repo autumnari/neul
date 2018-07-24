@@ -1,0 +1,17 @@
+<!--daily 연습-->
+
+<h1>모든 Tape list</h1>
+
+<div class="containter">
+    <div class="row">
+     <% @tapes.each do |tape| %>
+        <div class="col-12 col-md-4 col-lg-4">
+            <div class="tape">
+             <%= image_tag "#{tape.image}" , class: " no_img_size "%>
+             <div class="tape_name"><%= tape.title %></div>
+             <%= image_tag "tape_grey.png", class: " tape_grey_img " %>
+            </div>
+        </div>
+     <% end%>
+    </div>
+</div>
